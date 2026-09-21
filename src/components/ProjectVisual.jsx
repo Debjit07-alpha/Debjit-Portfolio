@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { viewportOnce } from "../animations/reveal";
 
 /** Coded editorial mockups — abstract product UI, no fake screenshots. */
-function Chrome({ url, children, tall = false }) {
+function Chrome({ url, children, tall = false, flush = false }) {
   return (
     <div className="border hairline bg-[#0A0A0A]">
       <div className="flex items-center gap-2 border-b hairline px-4 py-2.5">
@@ -11,14 +11,31 @@ function Chrome({ url, children, tall = false }) {
         <span className="w-2 h-2 rounded-full bg-[#FF1538]" />
         <p className="ml-3 font-mono-tech text-[10px] tracking-[0.2em] text-[#6B6B6B] truncate uppercase">{url}</p>
       </div>
+      {flush ? (
+        <div>{children}</div>
+      ) : (
       <div className={tall ? "p-5 md:p-8 min-h-[320px] md:min-h-[420px]" : "p-5 md:p-7 min-h-[260px] md:min-h-[320px]"}>
         {children}
       </div>
+      )}
     </div>
   );
 }
 
-export function ProjectVisual({ mock }) {
+export function ProjectVisual({ mock, image, title }) {
+  if (image) {
+    return (
+      <Chrome url={`${title || mock} — showcase`} flush>
+        <img
+          src={image}
+          alt={`${title || "Project"} showcase banner`}
+          loading="lazy"
+          decoding="async"
+          className="block w-full h-auto aspect-video object-cover bg-[#111]"
+        />
+      </Chrome>
+    );
+  }
   if (mock === "medikios") {
     return (
       <Chrome url="medikios — patient workflow" tall>

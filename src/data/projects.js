@@ -12,6 +12,7 @@ export const PROJECTS = [
     category: "FLAGSHIP / AI + HEALTHCARE",
     featured: true,
     mock: "medikios",
+    image: "/medikios.png",
   },
   {
     id: "02",
@@ -26,10 +27,11 @@ export const PROJECTS = [
     backend: "https://tastybites-backend-orcin.vercel.app/",
     category: "FULL-STACK / MERN",
     mock: "tastybites",
+    image: "/tastybites.png",
   },
   {
     id: "03",
-    title: "RIVER-PULSE",
+    title: "RIVER PULSE",
     subtitle: "PREDICTION PLATFORM",
     description:
       "A data-driven web application designed to visualize water quality, health incidents, disease trends and risk information to support early awareness of potential water-borne disease outbreaks.",
@@ -39,6 +41,7 @@ export const PROJECTS = [
     live: "https://water-borne-diseases-predictor.vercel.app/",
     category: "DATA / PREDICTION",
     mock: "water",
+    image: "/river-pulse.png",
   },
   {
     id: "04",
@@ -52,6 +55,7 @@ export const PROJECTS = [
     live: null,
     category: "AI / RAG SYSTEM",
     mock: "repomcp",
+    image: "/repo-mcp.png",
     pipeline: [
       "GITHUB REPOSITORY",
       "DOCUMENT INGESTION",
@@ -64,7 +68,7 @@ export const PROJECTS = [
   },
   {
     id: "05",
-    title: "SMART FRIDGE",
+    title: "FRESHBYTE",
     subtitle: "AI FOOD MANAGEMENT PLATFORM — COLLABORATIVE BUILD",
     description:
       "Contributed to an AI food-management platform covering ingredient tracking, expiry alerts, AI recipe generation, nutrition, grocery lists and fridge image scanning. Repository lives under a collaborator's account.",
@@ -82,6 +86,7 @@ export const PROJECTS = [
     live: "https://smart-fridge-frontend-alpha.vercel.app/",
     category: "AI / COLLABORATION",
     mock: "fridge",
+    image: "/freshbyte.png",
     collabNote: "Collaborative project — repository hosted under a collaborator account.",
   },
 ];

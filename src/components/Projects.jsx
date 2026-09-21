@@ -81,7 +81,7 @@ export function Projects() {
         <p className="mt-6 max-w-2xl text-[#A3A3A3] leading-relaxed">{featured.description}</p>
         <div className="mt-8 overflow-hidden">
           <div className="transition-transform duration-700 group-hover:scale-[1.015]">
-            <ProjectVisual mock={featured.mock} />
+            <ProjectVisual mock={featured.mock} image={featured.image} title={featured.title} />
           </div>
         </div>
         <TechList items={featured.technologies} />
@@ -133,7 +133,7 @@ export function Projects() {
               <div className={`lg:col-span-7 ${flip ? "lg:order-1" : ""} ${i === 1 ? "lg:pt-10" : i === 3 ? "lg:pt-16" : ""}`}>
                 <div className="overflow-hidden border-l-2 border-transparent group-hover:border-[#FF1538] transition-colors duration-500">
                   <div className="transition-transform duration-700 group-hover:scale-[1.02]">
-                    <ProjectVisual mock={p.mock} />
+                    <ProjectVisual mock={p.mock} image={p.image} title={p.title} />
                   </div>
                 </div>
                 <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
