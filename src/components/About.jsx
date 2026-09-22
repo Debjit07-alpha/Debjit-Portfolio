@@ -38,6 +38,21 @@ export function About() {
                 and intelligent features.
               </p>
             </Reveal>
+            <Reveal delay={0.1}>
+              <div className="mt-10 flex items-center gap-5 md:gap-7 max-w-xl">
+                <p className="font-display text-6xl md:text-7xl leading-none text-white">
+                  6<span className="text-[#FF1538]">×</span>
+                </p>
+                <div>
+                  <p className="font-mono-tech text-xs md:text-sm tracking-[0.3em] uppercase text-[#F5F5F5]">
+                    Hackathon
+                  </p>
+                  <p className="mt-1.5 font-mono-tech text-xs md:text-sm tracking-[0.3em] uppercase text-[#6B6B6B]">
+                    Finalist
+                  </p>
+                </div>
+              </div>
+            </Reveal>
             <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 border-t border-l hairline">
               {BLOCKS.map(([k, v]) => (
                 <div key={k} className="border-b border-r hairline px-5 py-5">
