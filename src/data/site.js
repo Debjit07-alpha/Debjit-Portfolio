@@ -11,6 +11,9 @@ export const PROFILE = {
   email: "sahadebjit07@gmail.com",
   github: "https://github.com/Debjit07-alpha",
   linkedin: "https://www.linkedin.com/in/debjit-saha-448b5028b",
+  x: "https://x.com/Debjit_69",
+  instagram:
+    "https://www.instagram.com/_0xdebjittt.__?stkn=MWFpemVzNTByYTFxOA==",
 };
 
 export const NAV_LINKS = [
