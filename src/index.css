@@ -147,6 +147,73 @@ body {
 
 .hairline { border-color: #1C1C1C; }
 
+/* ============ SKILLS & TECH STACK (additive only) ============ */
+
+/* subtle technical grid backdrop */
+.skills-grid {
+  background-image:
+    linear-gradient(rgba(245,245,245,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245,245,245,0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(75% 65% at 50% 35%, black 25%, transparent 100%);
+  -webkit-mask-image: radial-gradient(75% 65% at 50% 35%, black 25%, transparent 100%);
+}
+
+/* category card: thin red border glow deepens on hover */
+.skill-category { transition: border-color 0.35s ease, box-shadow 0.35s ease; }
+.skill-category:hover {
+  border-color: rgba(255,21,56,0.45);
+  box-shadow: 0 0 70px -18px rgba(255,21,56,0.6);
+}
+
+/* skill card hover: lift 4px, brighter border, red glow */
+.skill-card {
+  transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+.skill-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,21,56,0.6);
+  box-shadow: 0 12px 32px -12px rgba(255,21,56,0.45);
+  background-color: #0D0D0D;
+}
+
+/* monogram tile */
+.skill-mono {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.75rem;
+  width: 2.75rem;
+  border: 1px solid #1C1C1C;
+  background: #111111;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: #F5F5F5;
+  transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.skill-card:hover .skill-mono {
+  transform: scale(1.05);
+  color: #FF1538;
+  border-color: rgba(255,21,56,0.5);
+  box-shadow: 0 0 18px -4px rgba(255,21,56,0.5);
+}
+
+/* technology name shifts slightly on hover */
+.skill-name { transition: transform 0.3s cubic-bezier(0.22,1,0.36,1); }
+.skill-card:hover .skill-name { transform: translateX(2px); }
+
+/* fast subtle red light sweep across skill card on hover */
+.skill-scan {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(105deg, transparent 42%, rgba(255,21,56,0.14) 50%, transparent 58%);
+  transform: translateX(-60%);
+}
+.skill-card:hover .skill-scan { opacity: 1; animation: skill-scan 0.9s cubic-bezier(0.22,1,0.36,1) forwards; }
+@keyframes skill-scan { to { transform: translateX(60%); } }
+
 /* focus */
 a:focus-visible, button:focus-visible {
   outline: 2px solid #FF1538;
@@ -167,5 +234,10 @@ a:focus-visible, button:focus-visible {
   .animate-dash-orbit, .animate-dash-orbit-slow,
   .animate-float-soft, .animate-glow-pulse {
     animation: none !important;
+  }
+  .skill-scan { display: none; }
+  .skill-card:hover, .skill-category {
+    transform: none;
+    transition: none;
   }
 }
