@@ -114,6 +114,32 @@ body {
   to { transform: rotate(360deg); }
 }
 
+/* contact visual — restrained orbital motion */
+@keyframes orbit-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes orbit-spin-rev {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+@keyframes dash-orbit {
+  to { stroke-dashoffset: -100; }
+}
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0); opacity: 0.45; }
+  50% { transform: translateY(-9px); opacity: 0.9; }
+}
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 1; }
+}
+.animate-orbit-spin { animation: orbit-spin 80s linear infinite; }
+.animate-orbit-spin-rev { animation: orbit-spin-rev 110s linear infinite; }
+.animate-dash-orbit { animation: dash-orbit 9s linear infinite; }
+.animate-dash-orbit-slow { animation: dash-orbit 16s linear infinite reverse; }
+.animate-float-soft { animation: float-soft 7s ease-in-out infinite; }
+.animate-glow-pulse { animation: glow-pulse 4.5s ease-in-out infinite; }
+
 /* red scanline glow */
 .red-glow {
   box-shadow: 0 0 60px -12px rgba(255,21,56,0.55), 0 0 140px -30px rgba(255,21,56,0.35);
@@ -136,7 +162,10 @@ a:focus-visible, button:focus-visible {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .animate-marquee, .animate-marquee-slow, .animate-dot {
+  .animate-marquee, .animate-marquee-slow, .animate-dot,
+  .animate-orbit-spin, .animate-orbit-spin-rev,
+  .animate-dash-orbit, .animate-dash-orbit-slow,
+  .animate-float-soft, .animate-glow-pulse {
     animation: none !important;
   }
 }

@@ -5,9 +5,25 @@ import { viewportOnce } from "../animations/reveal";
 
 export function Experience() {
   return (
-    <section id="experience" className="border-t hairline bg-[#070707] scroll-mt-16">
-      <div className="mx-auto max-w-[1440px] px-5 md:px-10 py-20 md:py-32">
+    <section id="experience" className="relative overflow-hidden border-t hairline bg-[#070707] scroll-mt-16">
+      <div className="relative mx-auto max-w-[1440px] px-5 md:px-10 py-20 md:py-32">
         <SectionLabel index="05" title="EXPERIENCE" right="KOLKATA — IN" />
+        {/* Desktop visual — right-side layer inside the container, headline overlaps it */}
+        <div
+          aria-hidden="true"
+          className="absolute top-56 bottom-10 right-10 left-[53%] hidden lg:block"
+        >
+          <img
+            src="/experience.png"
+            alt=""
+            loading="lazy"
+            className="h-full w-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#070707_0%,rgba(7,7,7,0.55)_12%,transparent_28%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_left,#070707_0%,rgba(7,7,7,0.55)_12%,transparent_28%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_top,#070707_0%,rgba(7,7,7,0.5)_12%,transparent_25%)]" />
+        </div>
+        <div className="relative z-10">
         <Reveal>
           <h2 className="display-giant text-[16vw] md:text-[9rem] text-white">EXPERIENCE</h2>
         </Reveal>
@@ -40,6 +56,16 @@ export function Experience() {
             </motion.div>
           ))}
         </div>
+        </div>
+        {/* Full picture below content on mobile / tablet */}
+        <Reveal delay={0.05} className="relative z-0 mt-10 lg:hidden">
+          <img
+            src="/experience.png"
+            alt="Developer workspace with MERN stack setup in red ambient light"
+            loading="lazy"
+            className="h-auto w-full object-contain"
+          />
+        </Reveal>
       </div>
     </section>
   );
