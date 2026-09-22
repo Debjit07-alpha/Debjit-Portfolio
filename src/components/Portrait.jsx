@@ -1,4 +1,14 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
+import { viewportOnce } from "../animations/reveal";
+import { RedLineReveal } from "./shared";
+
+const CORNERS = [
+  { pos: "top-0 left-0 border-t-2 border-l-2", origin: "origin-top-left" },
+  { pos: "top-0 right-0 border-t-2 border-r-2", origin: "origin-top-right" },
+  { pos: "bottom-0 left-0 border-b-2 border-l-2", origin: "origin-bottom-left" },
+  { pos: "bottom-0 right-0 border-b-2 border-r-2", origin: "origin-bottom-right" },
+];
 
 /**
  * Cinematic portrait slot.
@@ -10,13 +20,20 @@ export function Portrait({ src = "/portrait.jpg", alt = "Portrait of Debjit Saha
   const [failed, setFailed] = useState(false);
   return (
     <div className={`relative ${ratio} overflow-hidden bg-[#0A0A0A] grain`}>
-      {/* red geometric frame */}
+      {/* red geometric frame — corners fade in stagger, shapes unchanged */}
       {frame && (
         <>
-          <div className="absolute top-0 left-0 w-10 h-10 border-t-2 border-l-2 border-[#FF1538] z-20" />
-          <div className="absolute top-0 right-0 w-10 h-10 border-t-2 border-r-2 border-[#FF1538] z-20" />
-          <div className="absolute bottom-0 left-0 w-10 h-10 border-b-2 border-l-2 border-[#FF1538] z-20" />
-          <div className="absolute bottom-0 right-0 w-10 h-10 border-b-2 border-r-2 border-[#FF1538] z-20" />
+          {CORNERS.map((c, i) => (
+            <motion.div
+              key={c.pos}
+              aria-hidden="true"
+              initial={{ opacity: 0, scale: 0.6 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={viewportOnce}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.35 + i * 0.1 }}
+              className={`absolute ${c.pos} w-10 h-10 border-[#FF1538] z-20 ${c.origin}`}
+            />
+          ))}
         </>
       )}
       {!failed ? (
@@ -44,7 +61,8 @@ export function Portrait({ src = "/portrait.jpg", alt = "Portrait of Debjit Saha
       )}
       {/* cinematic grade overlays */}
       <div className="absolute inset-0 z-10 pointer-events-none bg-[linear-gradient(180deg,transparent_55%,rgba(5,5,5,0.85))]" />
-      <div className="absolute inset-y-0 left-0 w-[3px] z-20 bg-[#FF1538]/80" />
+      {/* left red line — draws top → bottom on viewport entry */}
+      <RedLineReveal className="inset-y-0 left-0 w-[3px] z-20" lineClassName="bg-[#FF1538]/80" delay={0.2} />
       <div className="absolute inset-0 z-10 pointer-events-none shadow-[inset_0_0_120px_rgba(0,0,0,0.8)]" />
     </div>
   );

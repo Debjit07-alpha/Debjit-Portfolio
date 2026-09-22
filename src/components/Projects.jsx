@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, CodeXml } from "lucide-react";
 import { PROJECTS } from "../data/projects";
-import { SectionLabel, Reveal } from "./shared";
+import { SectionLabel, Reveal, RedLineReveal } from "./shared";
 import { ProjectVisual } from "./ProjectVisual";
 import { viewportOnce } from "../animations/reveal";
 
@@ -65,9 +65,11 @@ export function Projects() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={viewportOnce}
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-        className="group mt-14 md:mt-20 border-t-2 border-[#FF1538] pt-8"
+        className="group relative mt-14 md:mt-20 border-t-2 border-[#FF1538] pt-8"
         data-cursor="OPEN →"
       >
+        {/* top red border — draws left → right on viewport entry */}
+        <RedLineReveal orientation="horizontal" className="left-0 right-0 top-0 h-[2px]" delay={0.35} />
         <div className="flex flex-wrap items-baseline gap-x-6 gap-y-2">
           <span className="font-display text-6xl md:text-8xl text-[#1e1e1e] group-hover:text-[#FF1538] transition-colors">01</span>
           <div>
@@ -79,10 +81,13 @@ export function Projects() {
           </div>
         </div>
         <p className="mt-6 max-w-2xl text-[#A3A3A3] leading-relaxed">{featured.description}</p>
-        <div className="mt-8 overflow-hidden">
+        <div className="proj-poster relative mt-8 overflow-hidden rounded-md border border-transparent">
           <div className="transition-transform duration-700 group-hover:scale-[1.015]">
             <ProjectVisual mock={featured.mock} image={featured.image} title={featured.title} />
           </div>
+          <span className="proj-scan" aria-hidden="true" />
+          {/* left red edge — draws top → bottom on viewport entry */}
+          <RedLineReveal className="left-0 top-0 bottom-0 w-[2px] z-10" delay={0.45} />
         </div>
         <TechList items={featured.technologies} />
         <div className="mt-4 flex flex-wrap gap-2">
@@ -104,7 +109,7 @@ export function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewportOnce}
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-              className={`group grid grid-cols-1 lg:grid-cols-12 gap-8 border-t hairline pt-8 ${flip ? "" : ""}`}
+              className={`group relative grid grid-cols-1 lg:grid-cols-12 gap-8 border-t hairline pt-8 ${flip ? "" : ""}`}
               data-cursor={p.live ? "VIEW" : "CODE"}
             >
               <div className={`lg:col-span-5 ${flip ? "lg:order-2" : ""}`}>
@@ -131,10 +136,13 @@ export function Projects() {
                 <Links p={p} />
               </div>
               <div className={`lg:col-span-7 ${flip ? "lg:order-1" : ""} ${i === 1 ? "lg:pt-10" : i === 3 ? "lg:pt-16" : ""}`}>
-                <div className="overflow-hidden border-l-2 border-transparent group-hover:border-[#FF1538] transition-colors duration-500">
+                <div className="proj-poster relative overflow-hidden rounded-md border-l-2 border-transparent group-hover:border-[#FF1538] transition-colors duration-500">
                   <div className="transition-transform duration-700 group-hover:scale-[1.02]">
                     <ProjectVisual mock={p.mock} image={p.image} title={p.title} />
                   </div>
+                  <span className="proj-scan" aria-hidden="true" />
+                  {/* left red edge — draws top → bottom, staggered per card */}
+                  <RedLineReveal className="left-0 top-0 bottom-0 w-[2px] z-10" delay={0.3 + i * 0.12} />
                 </div>
                 <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
                   {p.concepts.slice(0, 6).map((c) => (

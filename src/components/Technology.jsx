@@ -70,22 +70,6 @@ const SKILL_ICONS = {
   render: SiRender,
 };
 
-function MaskLine({ children, delay }) {
-  return (
-    <span className="block overflow-hidden">
-      <motion.span
-        initial={{ y: "110%" }}
-        whileInView={{ y: "0%" }}
-        viewport={viewportOnce}
-        transition={{ duration: 0.95, ease: EASE, delay }}
-        className="block"
-      >
-        {children}
-      </motion.span>
-    </span>
-  );
-}
-
 function SkillCard({ skill, index }) {
   const Logo = SKILL_ICONS[skill.icon] || CodeXml;
   return (
@@ -290,13 +274,27 @@ export function Technology() {
         {/* header */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
           <div className="lg:col-span-8">
+            {/* headline uses opacity+y fade (same system as the rest of the
+                section) so it can never get stuck invisible inside a mask */}
             <h2 className="display-giant text-[15vw] md:text-[7.5rem] leading-[0.86]">
-              <MaskLine delay={0}>
-                <span className="text-white">SKILLS &</span>
-              </MaskLine>
-              <MaskLine delay={0.1}>
-                <span className="text-[#FF1538]">TECH STACK</span>
-              </MaskLine>
+              <motion.span
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewportOnce}
+                transition={{ duration: 0.9, ease: EASE, delay: 0 }}
+                className="block text-white"
+              >
+                SKILLS &
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewportOnce}
+                transition={{ duration: 0.9, ease: EASE, delay: 0.1 }}
+                className="block text-[#FF1538]"
+              >
+                TECH STACK
+              </motion.span>
             </h2>
             <motion.p
               initial={{ opacity: 0, y: 18 }}

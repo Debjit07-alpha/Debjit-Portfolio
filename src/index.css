@@ -214,6 +214,32 @@ body {
 .skill-card:hover .skill-scan { opacity: 1; animation: skill-scan 0.9s cubic-bezier(0.22,1,0.36,1) forwards; }
 @keyframes skill-scan { to { transform: translateX(60%); } }
 
+/* ============ PROJECT POSTERS — same interaction language as skill cards ============ */
+/* frame: lift 4px, brighter border, red glow (mirrors .skill-card:hover) */
+.proj-poster {
+  transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.group:hover .proj-poster, .group:focus-within .proj-poster {
+  transform: translateY(-4px);
+  border-color: rgba(255,21,56,0.6);
+  box-shadow: 0 12px 32px -12px rgba(255,21,56,0.45);
+}
+
+/* fast subtle red light sweep across poster on hover (mirrors .skill-scan) */
+.proj-scan {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(105deg, transparent 42%, rgba(255,21,56,0.14) 50%, transparent 58%);
+  transform: translateX(-60%);
+}
+.group:hover .proj-scan, .group:focus-within .proj-scan {
+  opacity: 1;
+  animation: skill-scan 0.9s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+
 /* focus */
 a:focus-visible, button:focus-visible {
   outline: 2px solid #FF1538;
@@ -235,8 +261,9 @@ a:focus-visible, button:focus-visible {
   .animate-float-soft, .animate-glow-pulse {
     animation: none !important;
   }
-  .skill-scan { display: none; }
-  .skill-card:hover, .skill-category {
+  .skill-scan, .proj-scan { display: none; }
+  .skill-card:hover, .skill-category,
+  .group:hover .proj-poster, .group:focus-within .proj-poster {
     transform: none;
     transition: none;
   }

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { EXPERIENCE } from "../data/content";
-import { SectionLabel, Reveal } from "./shared";
+import { SectionLabel, Reveal, RedLineReveal } from "./shared";
 import { viewportOnce } from "../animations/reveal";
 
 export function Experience() {
@@ -29,6 +29,8 @@ export function Experience() {
         </Reveal>
         <div className="mt-12 md:mt-16 relative">
           <div className="absolute left-[7px] md:left-[9px] top-2 bottom-2 w-px bg-[#242424]" aria-hidden="true" />
+          {/* red draw overlay — reveals top → bottom on viewport entry */}
+          <RedLineReveal className="left-[7px] md:left-[9px] top-2 bottom-2 w-px" delay={0.15} duration={1.1} />
           {EXPERIENCE.map((e) => (
             <motion.div
               key={e.company}
