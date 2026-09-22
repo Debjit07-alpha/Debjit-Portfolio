@@ -118,7 +118,7 @@ export function Hero() {
             transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.7 }}
             className="relative red-glow"
           >
-            <Portrait />
+            <Portrait src="/portrait.png" />
             {/* side caption */}
             <div className="absolute -left-3 md:-left-12 bottom-8 hidden sm:block">
               <p className="font-mono-tech text-[10px] tracking-[0.3em] uppercase text-[#F5F5F5] [writing-mode:vertical-rl] rotate-180 bg-[#050505]/70 px-2 py-4 border-l border-[#FF1538]">
