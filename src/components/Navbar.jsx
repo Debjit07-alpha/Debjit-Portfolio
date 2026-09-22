@@ -35,8 +35,12 @@ export function Navbar() {
           className="mx-auto max-w-[1440px] px-5 md:px-10 h-16 flex items-center justify-between"
           aria-label="Primary"
         >
-          <a href="#top" className="font-display text-xl tracking-wider text-[#F5F5F5]">
-            D<span className="text-[#FF1538]">S</span>
+          <a href="#top" aria-label="DS — back to top" className="block shrink-0">
+            <img
+              src="/favicon.png"
+              alt="DS logo"
+              className="block h-9 w-9 object-contain"
+            />
           </a>
           <ul className="hidden md:flex items-center gap-10">
             {NAV_LINKS.map((l) => (

@@ -36,10 +36,11 @@ export function Loader({ onDone }) {
           role="status"
           aria-label="Loading portfolio"
         >
-          <div className="font-display text-6xl md:text-7xl tracking-wide">
-            <span className="text-[#F5F5F5]">D</span>
-            <span className="text-[#FF1538]">S</span>
-          </div>
+          <img
+            src="/favicon.png"
+            alt="DS logo"
+            className="block w-[68px] md:w-24 h-auto object-contain shrink-0"
+          />
           <div className="mt-8 w-56 md:w-72 h-px bg-[#1C1C1C] relative overflow-hidden">
             <div
               className="absolute inset-y-0 left-0 bg-[#FF1538] transition-[width] duration-75"
